@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #002366;
+    text-align: center;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    /* Scroll hijacking is enabled for desktop only */
+    overflow-y: hidden; 
+}
+@media (max-width: 768px) {
+    body { overflow-y: auto; } /* Allow natural scrolling on mobile */
+}
+
+main {
+    position: relative; /* Ensure main content is positioned correctly */
+    z-index: 1; /* Bring main content above the video background */
+}
+
+/* --- Video Background Styles --- */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place it behind all other content */
+    background-color: #f0f8ff; /* Fallback color */
+}
+
+#bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: opacity(0.50); /* Make the video translucent */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 0;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease;
+}
+
+.nav-link {
+    margin: 0 15px;
+    color: #0047ab;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+section {
+    min-height: 90vh; /* Use min-height to allow sections to grow */
+    padding: 5vh 0; /* Use padding instead of margin for better layout control */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1, h2, h3 {
+    background: linear-gradient(45deg, #007bff, #002366);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+/* About Me Section Specifics */
+.about-content {
+    text-align: left;
+    width: max-content;
+    margin: 0 auto;
+}
+
+/* --- Card Styles for Experience & Certifications --- */
+.experience-card .card-inner {
+    width: 300px; /* Width remains for desktop */
+    height: auto; /* Height becomes automatic to fit content */
+}
+
+.certification-card .card-inner {
+    width: 300px; /* Width remains for desktop */
+    height: auto; /* Height becomes automatic to fit content */
+}
+
+/* --- Common Card Grid & Structure --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 40px; /* Add space between cards */
+    justify-items: center; /* Center grid items */
+    margin-top: 20px;
+    padding: 0 300px;
+}
+
+.info-card {
+    background-color: transparent; /* The card container itself is see-through */
+}
+
+.certification-card {
+    display: flex;
+    align-items: stretch;
+}
+
+.card-inner {
+    /* This is now the main card container */
+    background-color: #e6f2ff;
+    border-radius: 25px;
+    border: 1px solid #477584;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top */
+    text-align: center;
+    width: 100%; /* Ensure card-inner fills the info-card container */
+}
+
+.card-front, .card-back {
+    /* These are now just content wrappers, no special positioning needed */
+    padding: 10px 0;
+}
+
+.card-front h3 {
+    margin-bottom: 10px;
+}
+
+.card-back {
+    border-top: 1px solid #0047ab; /* Add a separator line */
+    margin-top: 10px;
+}
+
+a.contact-link {
+    color: #0047ab;
+    margin: 0 10px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a.contact-link:hover {
+    text-decoration: underline;
+}
+
+/* --- Achievements Section Styles --- */
+.achievements-container {
+    display: flex;
+    justify-content: space-around; /* Better spacing distribution */
+    gap: 40px;
+    padding: 0 5%;
+    width: 90%; /* Use width and auto margin for centering */
+    margin: 0 auto;
+}
+
+.achievement-table-wrapper {
+    flex: 1;
+    max-width: 600px; /* Reduced max-width to fit tables side-by-side */
+    background-color: #e6f2ff;
+    border-radius: 25px;
+    border: 1px solid #477584;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.achievement-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.achievement-table th,
+.achievement-table td {
+    padding: 10px 10px;
+    border-bottom: 1px solid #0047ab;
+}
+
+.achievement-table th {
+    font-weight: bold;
+    width: 100px; /* Increased width for better label readability */
+    color: #0047ab;
+}
+
+.achievement-table tr:last-child th,
+.achievement-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* --- Footer Styles --- */
+.site-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Design for Mobile --- */
+
+/* Tablet and smaller devices */
+@media (max-width: 1024px) {
+    .card-grid {
+        padding: 0 100px; /* Reduce padding for tablets */
+    }
+
+    .achievements-container {
+        padding: 0 2%;
+        width: 96%;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    header {
+        padding: 10px 0;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav-link {
+        margin: 0 10px;
+        font-size: 1rem;
+    }
+
+    section {
+        min-height: auto; /* Allow sections to have natural height */
+        padding: 80px 20px; /* Adjust padding for mobile */
+        height: auto;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .about-content {
+        width: auto; /* Allow content to wrap naturally */
+        text-align: center;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr; /* Stack cards vertically */
+        padding: 0 20px; /* Adjust padding for mobile */
+        gap: 30px;
+    }
+
+    .experience-card .card-inner,
+    .certification-card .card-inner {
+        width: 100%; /* Make cards full width of the container */
+        max-width: 320px; /* Optional: constrain max width on mobile */
+        margin: 0 auto;
+    }
+
+    .achievements-container {
+        flex-direction: column; /* Stack tables vertically */
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .achievement-table-wrapper {
+        max-width: 100%; /* Allow tables to take full width */
+    }
+
+}
